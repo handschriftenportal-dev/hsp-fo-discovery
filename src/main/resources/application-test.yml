@@ -1,0 +1,16 @@
+eureka:
+  client:
+    availabilityZones:
+      potsdamerplatz: one
+    enabled: true
+    fetchRegistry: false
+    healthcheck:
+      enabled: false
+    preferSameZoneEureka: true
+    region: potsdamerplatz
+    registerWithEureka: true
+    serviceUrl:
+      one: http://b-dev-registry.pk.de:8761/serviceregistry/eureka/
+
+solr:
+   host: http://b-dev1054:8983

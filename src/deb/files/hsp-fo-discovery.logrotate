@@ -1,0 +1,10 @@
+/var/log/SBB/hsp-fo-discovery/*log {
+        daily
+        missingok
+        rotate 90
+        sharedscripts
+        compress
+        delaycompress
+        notifempty
+        copytruncate
+}

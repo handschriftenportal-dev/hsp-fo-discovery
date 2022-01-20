@@ -1,0 +1,6 @@
+eureka:
+  client:
+    enabled: false
+listen:
+  auto:
+    start:  false

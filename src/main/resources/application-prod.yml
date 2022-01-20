@@ -1,0 +1,21 @@
+eureka:
+  client:
+    availabilityZones:
+      potsdamerplatz: one,two
+    environment: production
+    fetchRegistry: true
+    healthcheck:
+      enabled: true
+    preferSameZoneEureka: true
+    region: potsdamerplatz
+    registerWithEureka: true
+    serviceUrl:
+      one: http://serviceregistry.sbb.spk-berlin.de:8761/serviceregistry/eureka/
+      two: http://serviceregistry2.sbb.spk-berlin.de:8761/serviceregistry/eureka/
+
+logging:
+  level:
+    staatsbibliothek.berlin: WARN
+
+solr:
+  host: http://b-lx0139.sbb.spk-berlin.de:8988

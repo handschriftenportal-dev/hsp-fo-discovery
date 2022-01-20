@@ -1,0 +1,8 @@
+Package: [[artifactId]]-filebeat
+Version: [[version]]
+Section: misc
+Priority: low
+Architecture: all
+Description: [[name]]
+Maintainer: SBB-IDM2.2 <SBB-IDM2.2@pk.de>
+Depends: filebeat (>=5.0.1), [[artifactId]] (=[[version]])

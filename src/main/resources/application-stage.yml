@@ -1,0 +1,22 @@
+eureka:
+  client:
+    availabilityZones:
+      potsdamerplatz: one
+    enabled: true
+    fetchRegistry: false
+    healthcheck:
+      enabled: false
+    preferSameZoneEureka: true
+    region: potsdamerplatz
+    registerWithEureka: true
+    serviceUrl:
+      one: http://b-lx0122.sbb.spk-berlin.de:8761/serviceregistry/eureka/
+
+logging:
+  level:
+    staatsbibliothek.berlin: WARN
+  pattern:
+    console: "%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"
+
+solr:
+  host: http://b-lx0107.sbb.spk-berlin.de:8983

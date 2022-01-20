@@ -1,0 +1,49 @@
+################### Filebeat Configuration for IMD #########################
+
+############################# Filebeat ######################################
+filebeat:
+  # List of prospectors to fetch data.
+  prospectors:
+    # Each - is a prospector. Below are the prospector specific configurations
+    - input_type: log
+      paths:
+        - /var/log/SBB/hsp-fo-discovery/*.log
+      fields.app_id: imd
+
+      scan_frequency: 20s
+
+      ### Multiline options
+
+      # Mutiline can be used for log messages spanning multiple lines. This is common
+      # for Java Stack Traces or C-Line Continuation
+
+      # The regexp Pattern that has to be matched. The example pattern matches all lines starting with Date i.e.:2016-12-01 14:36:06
+      #    multiline.pattern: "^[[:blank:]]+|^Caused"
+
+      # Defines if the pattern set under pattern should be negated or not. Default is false.
+      #    multiline.negate: true
+
+      # Match can be set to "after" or "before". It is used to define if lines should be append to a pattern
+      # that was (not) matched before or after or as long as a pattern is not matched based on negate.
+      # Note: After is the equivalent to previous and before is the equivalent to to next in Logstash
+      #    multiline.match: after
+
+      # The maximum number of lines that are combined to one event.
+      # In case there are more the max_lines the additional lines are discarded.
+      # Default is 500
+      # multiline.max_lines: 500
+
+      # After the defined timeout, an multiline event is sent even if no new pattern was found to start a new event
+      # Default is 5s.
+      #multiline.timeout: 5s
+
+
+      # Exclude lines. A list of regular expressions to match. It drops the lines that are
+      # matching any regular expression from the list. The include_lines is called before
+      # exclude_lines. By default, no lines are dropped.
+      exclude_lines: ["^(2[0-9]{3}(-[0-9]{2}){2} [0-9]{2}(:[0-9]{2}){2}.[0-9]{3} DEBUG)", "^(2[0-9]{3}(-[0-9]{2}){2} [0-9]{2}(:[0-9]{2}){2}.[0-9]{3}  INFO)", "^[[:blank:]]+|^Caused"]
+
+  # Include lines. A list of regular expressions to match. It exports the lines that are
+  # matching any regular expression from the list. The include_lines is called before
+  # exclude_lines. By default, all the lines are exported.
+  #   include_lines: ["^(2[0-9]{3}(-[0-9]{2}){2} [0-9]{2}(:[0-9]{2}){2}.[0-9]{3} ERROR)", "^(2[0-9]{3}(-[0-9]{2}){2} [0-9]{2}(:[0-9]{2}){2}.[0-9]{3}  WARN)"]

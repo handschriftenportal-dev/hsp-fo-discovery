@@ -1,0 +1,89 @@
+eureka:
+  instance:
+    healthPageUrlPath: ${server.servlet.context-path}/health
+    non-secure-port-enabled: true
+    prefer-ip-address: false
+    statusPageUrlPath: ${server.servlet.context-path}/info
+
+hsp:
+  highlight:
+    snippetCount: 3
+  facets:
+    - format-facet
+    - described-object-facet
+    - digitized-iiif-object-facet
+    - digitized-object-facet
+    - has-notation-facet
+    - illuminated-facet
+    - language-facet
+    - material-facet
+    - object-type-facet
+    - orig-date-dated-facet
+    - orig-place-facet
+    - repository-facet
+    - settlement-facet
+    - status-facet
+    - type-facet
+  stats:
+    - height-facet
+    - leaves-count-facet
+    - orig-date-from-facet
+    - orig-date-to-facet
+    - orig-date-when-facet
+    - width-facet
+
+info:
+  component: hsp-fo-discovery
+  description: Handschriftenportal Front Office Discovery
+
+listen:
+  auto:
+    start:  true
+
+logging:
+  file:
+    name: /var/log/SBB/hsp-fo-discovery/hsp-fo-discovery.log
+  level:
+    staatsbibliothek.berlin: INFO
+  pattern:
+    console: "%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"
+
+management:
+  endpoint:
+    info:
+      enabled: true
+    health:
+      enabled: true
+      show-details: ALWAYS
+    shutdown:
+      enabled: false
+  endpoints:
+    enabled-by-default: false
+    web:
+      base-path: /
+
+server:
+  port: 9295
+  servlet:
+    context-path: /api
+
+solr:
+  core: hsp
+  host: http://localhost:8983
+
+spring:
+  application:
+    name: hsp-fo-discovery
+  cloud:
+    config:
+      enabled: false
+  data:
+    solr:
+      host: ${solr.host}/solr
+
+springdoc:
+  remove-broken-reference-definitions: false
+  show-actuator: true
+  swagger-ui:
+    path: /swagger-ui
+  writer-with-default-pretty-printer: true

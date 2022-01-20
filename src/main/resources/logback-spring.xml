@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <!-- configure properties depending on the active spring profile -->
+    <springProfile name="prod, stage, test">
+        <property name="LOGS" value="/var/log/SBB/hsp-fo-discovery" />
+    </springProfile>
+    <springProfile name="dev, integration">
+        <property name="LOGS" value="./logs" />
+    </springProfile>
+
+    <appender name="Console" class="ch.qos.logback.core.ConsoleAppender">
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>
+            	%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] [%thread] %-5level %logger{36} - %msg%n%throwable
+            </Pattern>
+        </layout>
+    </appender>
+ 
+    <appender name="FileAppenderInfo" class="ch.qos.logback.core.FileAppender">
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>INFO</level>
+        </filter>
+        <file>${LOGS}/hsp-fo-indexer.log</file>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>
+                %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] [%thread] %-5level %logger{36} - %msg%n%throwable
+            </Pattern>
+        </layout>
+    </appender>
+    
+    <appender name="FileAppenderWarn" class="ch.qos.logback.core.FileAppender">
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>WARN</level>
+        </filter>
+        <file>${LOGS}/hsp-fo-indexer.warn.log</file>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>
+                %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] [%thread] %-5level %logger{36} - %msg%n%throwable
+            </Pattern>
+        </layout>
+    </appender>
+
+    <!-- LOG everything at INFO level -->
+    <root level="info">
+        <appender-ref ref="FileAppenderInfo" />
+        <appender-ref ref="FileAppenderWarn" />
+        <appender-ref ref="Console" />
+    </root>
+
+</configuration>
