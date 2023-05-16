@@ -1,0 +1,82 @@
+eureka:
+  instance:
+    health-check-url-path: ${server.servlet.context-path}/health
+    non-secure-port-enabled: true
+    prefer-ip-address: false
+    status-page-url-path: ${server.servlet.context-path}/info
+
+hsp:
+  highlight:
+    snippetCount: 3
+  facets:
+    - format-facet
+    - described-object-facet
+    - digitized-iiif-object-facet
+    - digitized-object-facet
+    - has-notation-facet
+    - illuminated-facet
+    - language-facet
+    - material-facet
+    - object-type-facet
+    - orig-date-type-facet
+    - orig-place-facet
+    - repository-facet
+    - settlement-facet
+    - status-facet
+    - type-facet
+  stats:
+    - height-facet
+    - leaves-count-facet
+    - orig-date-from-facet
+    - orig-date-to-facet
+    - orig-date-when-facet
+    - width-facet
+
+info:
+  component: @project.artifactId@
+  description: @project.description@
+  version: @project.version@
+
+logging:
+  config: classpath:logback.xml
+
+management:
+  info:
+    env:
+      enabled: true
+  endpoint:
+    health:
+      enabled: true
+      show-details: NEVER
+    info:
+      enabled: true
+    shutdown:
+      enabled: false
+  endpoints:
+    enabled-by-default: false
+    web:
+      base-path: /
+      exposure.include: health
+server:
+  error:
+    include-message: always
+    include-exception: true
+  port: 9295
+  servlet:
+    context-path: /api
+
+solr:
+  core: hsp
+  host: http://localhost:8983
+  timeout: 5000
+
+spring:
+  application:
+    name: hsp-fo-discovery
+
+springdoc:
+  remove-broken-reference-definitions: false
+  show-actuator: false
+  swagger-ui:
+    path: /swagger-ui
+  writer-with-default-pretty-printer: true

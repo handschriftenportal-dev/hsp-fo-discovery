@@ -1,0 +1,5 @@
+#!/bin/sh
+if [ -d "/var/log/SBB/hsp-fo-discovery" && ! -L "/var/log/SBB/hsp-fo-discovery" ] 
+then
+    mv "/var/log/SBB/hsp-fo-discovery" "/data/log/"
+fi

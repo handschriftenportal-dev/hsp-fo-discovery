@@ -1,0 +1,6 @@
+eureka:
+  client:
+    enabled: false
+
+logging:
+  config: classpath:logback-dev.xml
