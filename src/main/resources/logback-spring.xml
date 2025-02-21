@@ -1,0 +1,29 @@
+<configuration>
+    <springProfile name="dev">
+        <appender name="Console" class="ch.qos.logback.core.ConsoleAppender">
+            <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+                <Pattern>
+                    %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] [%thread] %-5level %logger{36} - %msg%n%throwable
+                </Pattern>
+            </encoder>
+        </appender>
+        <!-- LOG everything at INFO level -->
+        <root level="INFO">
+            <appender-ref ref="Console" />
+        </root>
+    </springProfile>
+    <springProfile name="!dev">
+        <appender name="FileAppender" class="ch.qos.logback.core.FileAppender">
+            <file>/data/log/hsp-fo-discovery/hsp-fo-discovery.log</file>
+            <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+                <Pattern>
+                    %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] [%thread] %-5level %logger{36} - %msg%n%throwable
+                </Pattern>
+            </encoder>
+        </appender>
+        <!-- LOG everything at INFO level -->
+        <root level="INFO">
+            <appender-ref ref="FileAppender" />
+        </root>
+    </springProfile>
+</configuration>

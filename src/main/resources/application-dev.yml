@@ -1,0 +1,14 @@
+---
+eureka:
+  client:
+    availabilityZones:
+      potsdamerplatz: one
+    enabled: true
+    fetchRegistry: true
+    healthcheck:
+      enabled: false
+    preferSameZoneEureka: true
+    region: potsdamerplatz
+    registerWithEureka: false
+    serviceUrl:
+      one: http://lokalhost:8761/serviceregistry/eureka/

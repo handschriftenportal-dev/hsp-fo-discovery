@@ -1,0 +1,53 @@
+target/
+.mvn/
+mvnw
+mvnw.cmd
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+
+### VS Code ###
+.vscode/
+
+### OSX ###
+.DS_Store
+
+### LOGS ###
+logs/
+
+### Jenkins ###
+target/
+.classpath
+.project
+.settings
+.idea
+*.iml
+audit.log
+.scannerwork
+.git
+dependency-check*
+sonar-report
+mvnw*
+*.versionsBackup
+mvnsettings.xml
+.bash_history
